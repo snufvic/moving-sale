@@ -8,7 +8,11 @@ export const items: Item[] = [
     description: "גיטרה במצב מצוין, כמעט ולא הייתה בשימוש.",
     category: "מוזיקה",
     status: "available",
-    images: ["/images/placeholder.jpg"],
+    images: [
+      "https://picsum.photos/id/20/900/700",
+      "https://picsum.photos/id/21/900/700",
+      "https://picsum.photos/id/22/900/700",
+    ],
   },
   {
     id: 2,
@@ -17,7 +21,11 @@ export const items: Item[] = [
     description: "ספרייה גדולה בצבע לבן.",
     category: "ריהוט",
     status: "available",
-    images: ["/images/placeholder.jpg"],
+    images: [
+      "https://picsum.photos/id/30/900/700",
+      "https://picsum.photos/id/31/900/700",
+      "https://picsum.photos/id/32/900/700",
+    ],
   },
   {
     id: 3,
@@ -26,6 +34,10 @@ export const items: Item[] = [
     description: "עובד מצוין.",
     category: "מטבח",
     status: "sold",
-    images: ["/images/placeholder.jpg"],
+    images: [
+      "https://picsum.photos/id/40/900/700",
+      "https://picsum.photos/id/41/900/700",
+      "https://picsum.photos/id/42/900/700",
+    ],
   },
 ];
