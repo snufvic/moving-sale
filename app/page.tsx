@@ -1,20 +1,32 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import CategoryBar from "./components/CategoryBar";
 import ItemCard from "./components/ItemCard";
 
-import { items } from "./data/items";
+import { getItems } from "./lib/getItems";
 
 export default function Home() {
+  const [items, setItems] = useState<any[]>([]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("הכל");
 
+  useEffect(() => {
+    async function load() {
+      const data = await getItems();
+      setItems(data);
+    }
+
+    load();
+  }, []);
+
   const filteredItems = useMemo(() => {
     return items.filter((item) => {
+      if (item.status === "sold") return false;
+
       const matchesSearch = (
         item.title +
         " " +
@@ -30,19 +42,15 @@ export default function Home() {
 
       return matchesSearch && matchesCategory;
     });
-  }, [search, category]);
+  }, [items, search, category]);
 
   return (
     <main className="min-h-screen bg-gray-100">
       <Header />
 
       <div className="mx-auto max-w-7xl px-6 py-8">
-
         <div className="mb-6">
-          <SearchBar
-            value={search}
-            onChange={setSearch}
-          />
+          <SearchBar value={search} onChange={setSearch} />
         </div>
 
         <div className="mb-8">
@@ -66,7 +74,6 @@ export default function Home() {
             </div>
           )}
         </div>
-
       </div>
     </main>
   );

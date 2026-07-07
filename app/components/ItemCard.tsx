@@ -30,11 +30,15 @@ export default function ItemCard({ item }: Props) {
 
         <div className="relative aspect-[4/3]">
           <Image
-            src={item.images[0]}
-            alt={item.title}
-            fill
-            className="object-cover"
-          />
+          src={
+            item.images && item.images.length > 0
+              ? item.images[0]
+              : "https://picsum.photos/600/400"
+          }
+          alt={item.title}
+          fill
+          className="object-cover"
+        />
         </div>
 
         <div className="space-y-3 p-5">
