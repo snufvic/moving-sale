@@ -1,15 +1,6 @@
-export type ItemStatus = "available" | "reserved" | "sold";
+import type { Category } from "../data/categories";
 
-export type Category =
-  | "ריהוט"
-  | "מוצרי חשמל"
-  | "מטבח"
-  | "מוזיקה"
-  | "ספרים"
-  | "ילדים"
-  | "גינה"
-  | "כלי עבודה"
-  | "אחר";
+export type ItemStatus = "available" | "reserved" | "sold";
 
 export interface Item {
   id: number;
