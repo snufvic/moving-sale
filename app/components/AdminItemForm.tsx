@@ -2,7 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
-import { CATEGORIES, DEFAULT_CATEGORY, type Category } from "../data/categories";
+import {
+  CATEGORIES,
+  DEFAULT_CATEGORY,
+  type Category,
+} from "../data/categories";
 import type { Item, ItemStatus } from "../types/item";
 
 type Props = {
@@ -93,7 +97,6 @@ export default function AdminItemForm({ item, onSaved }: Props) {
 
       if (result.error) {
         alert(result.error.message);
-        setSaving(false);
         return;
       }
 
@@ -163,12 +166,45 @@ export default function AdminItemForm({ item, onSaved }: Props) {
           <option value="sold">נמכר</option>
         </select>
 
-        <input
-          type="file"
-          multiple
-          accept="image/*"
-          onChange={(e) => setFiles(e.target.files)}
-        />
+        <div>
+          <label
+            htmlFor="images"
+            className="flex cursor-pointer items-center justify-center rounded-xl border-2 border-dashed border-blue-300 bg-blue-50 px-6 py-8 text-center transition hover:border-blue-500 hover:bg-blue-100"
+          >
+            <div>
+              <div className="text-4xl">📷</div>
+              <div className="mt-2 font-semibold text-blue-700">
+                בחר תמונות
+              </div>
+              <div className="mt-1 text-sm text-gray-600">
+                ניתן לבחור מספר תמונות
+              </div>
+            </div>
+          </label>
+
+          <input
+            id="images"
+            type="file"
+            multiple
+            accept="image/*"
+            className="hidden"
+            onChange={(e) => setFiles(e.target.files)}
+          />
+
+          {files && files.length > 0 && (
+            <div className="mt-3 rounded-lg bg-green-50 p-3">
+              <p className="font-semibold text-green-700">
+                נבחרו {files.length} תמונות
+              </p>
+
+              <ul className="mt-2 list-inside list-disc text-sm text-gray-700">
+                {Array.from(files).map((file) => (
+                  <li key={file.name}>{file.name}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
 
         <button
           onClick={save}
