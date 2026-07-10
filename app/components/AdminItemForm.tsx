@@ -2,17 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
-import { CATEGORIES, DEFAULT_CATEGORY } from "../data/categories";
-
-type Item = {
-  id?: number;
-  title: string;
-  price: number;
-  category: string;
-  description: string;
-  status: string;
-  images: string[];
-};
+import { CATEGORIES, DEFAULT_CATEGORY, type Category } from "../data/categories";
+import type { Item, ItemStatus } from "../types/item";
 
 type Props = {
   item?: Item | null;
@@ -22,9 +13,9 @@ type Props = {
 export default function AdminItemForm({ item, onSaved }: Props) {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
-  const [category, setCategory] = useState(DEFAULT_CATEGORY);
+  const [category, setCategory] = useState<Category>(DEFAULT_CATEGORY);
   const [description, setDescription] = useState("");
-  const [status, setStatus] = useState("available");
+  const [status, setStatus] = useState<ItemStatus>("available");
   const [files, setFiles] = useState<FileList | null>(null);
   const [saving, setSaving] = useState(false);
 
@@ -145,7 +136,7 @@ export default function AdminItemForm({ item, onSaved }: Props) {
 
         <select
           value={category}
-          onChange={(e) => setCategory(e.target.value)}
+          onChange={(e) => setCategory(e.target.value as Category)}
           className="w-full rounded-xl border border-gray-300 bg-white p-3 text-gray-900"
         >
           {CATEGORIES.map((cat) => (
@@ -165,7 +156,7 @@ export default function AdminItemForm({ item, onSaved }: Props) {
 
         <select
           value={status}
-          onChange={(e) => setStatus(e.target.value)}
+          onChange={(e) => setStatus(e.target.value as ItemStatus)}
           className="w-full rounded-xl border border-gray-300 bg-white p-3 text-gray-900"
         >
           <option value="available">זמין</option>
