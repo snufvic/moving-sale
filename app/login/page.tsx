@@ -46,7 +46,7 @@ export default function LoginPage() {
             placeholder="אימייל"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full rounded-lg border p-3 text-right"
+            className="w-full rounded-lg border border-gray-300 bg-white p-3 text-right text-gray-900 placeholder:text-gray-500 focus:border-black focus:outline-none"
             required
           />
 
@@ -55,7 +55,7 @@ export default function LoginPage() {
             placeholder="סיסמה"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full rounded-lg border p-3 text-right"
+            className="w-full rounded-lg border border-gray-300 bg-white p-3 text-right text-gray-900 placeholder:text-gray-500 focus:border-black focus:outline-none"
             required
           />
 

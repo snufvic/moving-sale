@@ -92,13 +92,21 @@ export default function AdminItemForm({ item, onSaved }: Props) {
       };
 
       const result = item?.id
-        ? await supabase.from("items").update(payload).eq("id", item.id)
-        : await supabase.from("items").insert(payload);
+  ? await supabase
+      .from("items")
+      .update(payload)
+      .eq("id", item.id)
+      .select()
+  : await supabase
+      .from("items")
+      .insert(payload)
+      .select();
 
-      if (result.error) {
-        alert(result.error.message);
-        return;
-      }
+
+if (result.error) {
+  alert(result.error.message);
+  return;
+}
 
       alert(item ? "הפריט עודכן!" : "הפריט נשמר!");
 
