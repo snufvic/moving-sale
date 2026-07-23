@@ -65,7 +65,7 @@ export default function ItemPage({
     );
   }
 
-  const phone = "972525757870";
+  const phone = "972544613797";
 
   const message = encodeURIComponent(
     `שלום, אני מעוניין ב-${item.title}. האם הוא עדיין זמין?`

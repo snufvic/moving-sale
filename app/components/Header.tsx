@@ -4,11 +4,11 @@ export default function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
         <div className="text-right">
           <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">
-            🏡 מכירת תכולת בית
+            🏡 מכירת ומסירת תכולת בית
           </h1>
 
           <p className="mt-2 text-base text-gray-600 sm:text-lg">
-            פריטים איכותיים למכירה במחירים הוגנים
+            פריטים איכותיים למסירה ומכירה במחירים הוגנים
           </p>
         </div>
       </div>
